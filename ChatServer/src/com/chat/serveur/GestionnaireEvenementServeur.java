@@ -4,6 +4,8 @@ import com.chat.commun.evenement.Evenement;
 import com.chat.commun.evenement.GestionnaireEvenement;
 import com.chat.commun.net.Connexion;
 
+import java.util.Scanner;
+
 /**
  * Cette classe représente un gestionnaire d'événement d'un serveur. Lorsqu'un serveur reçoit un texte d'un client,
  * il crée un événement à partir du texte reçu et alerte ce gestionnaire qui réagit en gérant l'événement.
@@ -51,6 +53,9 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                     break;
 
                 //Ajoutez ici d’autres case pour gérer d’autres commandes.
+                case "MSG": //Envoie un message au salon de chat public
+                  serveur.envoyerATousSauf(evenement.getArgument(),cnx.getAlias());
+                    break;
 
                 default: //Renvoyer le texte recu convertit en majuscules :
                     msg = (evenement.getType() + " " + evenement.getArgument()).toUpperCase();

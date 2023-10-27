@@ -50,6 +50,7 @@ public class Evenement {
      * @return String argument de l'événement
      */
     public String getArgument() {
+
         return argument;
     }
 }

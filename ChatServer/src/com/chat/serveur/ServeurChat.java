@@ -3,6 +3,7 @@ package com.chat.serveur;
 import com.chat.commun.net.Connexion;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  * Cette classe étend (hérite) la classe abstraite Serveur et y ajoute le nécessaire pour que le
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  * @since 2023-09-15
  */
 public class ServeurChat extends Serveur {
+    Vector<String> historique = new Vector<>();
 
     /**
      * Crée un serveur de chat qui va écouter sur le port spécifié.
@@ -99,8 +101,8 @@ public class ServeurChat extends Serveur {
 
     public void envoyerATousSauf(String str, String aliasExpediteur){
             for(Connexion cnx: connectes){
-                if(aliasExpediteur.equals(cnx.getAlias())){
-                    cnx.envoyer(str);
+                if(!aliasExpediteur.equals(cnx.getAlias())){
+                    cnx.envoyer(aliasExpediteur+">>"+ str);
                 }
             }
 
