@@ -20,7 +20,7 @@ import java.util.Vector;
  * @version 1.0
  * @since 2023-09-01
  */
-public class Serveur implements Lecteur {
+public class  Serveur implements Lecteur {
 
     //Liste des connectés au serveur :
     protected final Vector<Connexion> connectes = new Vector<>();

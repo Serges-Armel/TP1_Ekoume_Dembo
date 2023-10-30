@@ -56,7 +56,10 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                 case "MSG": //Envoie un message au salon de chat public
                   serveur.envoyerATousSauf(evenement.getArgument(),cnx.getAlias());
                     break;
-
+                case  "JOIN":
+                    Invitation invitation = new Invitation();
+                    evenement.getSource();
+                    break;
                 default: //Renvoyer le texte recu convertit en majuscules :
                     msg = (evenement.getType() + " " + evenement.getArgument()).toUpperCase();
                     cnx.envoyer(msg);

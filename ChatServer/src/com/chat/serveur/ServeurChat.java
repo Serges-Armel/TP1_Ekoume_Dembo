@@ -1,8 +1,10 @@
 package com.chat.serveur;
 
+import com.chat.commun.evenement.Evenement;
 import com.chat.commun.net.Connexion;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -30,12 +32,12 @@ public class ServeurChat extends Serveur {
         String hist = this.historique();
         if ("".equals(hist)) {
             connexion.envoyer("OK");
-        }
-        else {
+        } else {
             connexion.envoyer("HIST " + hist);
         }
         return super.ajouter(connexion);
     }
+
     /**
      * Valide l'arrivée d'un nouveau client sur le serveur. Cette redéfinition
      * de la méthode héritée de Serveur vérifie si le nouveau client a envoyé
@@ -55,17 +57,17 @@ public class ServeurChat extends Serveur {
             return false;
         }
         taille = texte.length();
-        for (int i=0;i<taille;i++) {
+        for (int i = 0; i < taille; i++) {
             c = texte.charAt(i);
-            if ((c<'a' || c>'z') && (c<'A' || c>'Z') && (c<'0' || c>'9')
-                    && c!='_' && c!='-') {
+            if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9')
+                    && c != '_' && c != '-') {
                 res = false;
                 break;
             }
         }
         if (!res)
             return false;
-        for (Connexion cnx:connectes) {
+        for (Connexion cnx : connectes) {
             if (texte.equalsIgnoreCase(cnx.getAlias())) { //alias déjà utilisé
                 res = false;
                 break;
@@ -83,10 +85,11 @@ public class ServeurChat extends Serveur {
      */
     public String list() {
         String s = "";
-        for (Connexion cnx:connectes)
-            s+=cnx.getAlias()+":";
+        for (Connexion cnx : connectes)
+            s += cnx.getAlias() + ":";
         return s;
     }
+
     /**
      * Retourne la liste des messages de l'historique de chat dans une chaîne
      * de caractères.
@@ -95,16 +98,29 @@ public class ServeurChat extends Serveur {
      * forme message1\nmessage2\nmessage3 ...
      */
     public String historique() {
+
         String s = "";
+        for (Connexion cnx : connectes) {
+            s += cnx.getAlias() + ">>" + cnx.getAvailableText() + "\n";
+        }
         return s;
     }
 
-    public void envoyerATousSauf(String str, String aliasExpediteur){
-            for(Connexion cnx: connectes){
-                if(!aliasExpediteur.equals(cnx.getAlias())){
-                    cnx.envoyer(aliasExpediteur+">>"+ str);
-                }
+    public boolean ajouterHistorique(String msg) {
+        return historique.add(msg);
+    }
+
+    public void envoyerATousSauf(String str, String aliasExpediteur) {
+        for (Connexion cnx : connectes) {
+            if (!aliasExpediteur.equals(cnx.getAlias())) {
+                cnx.envoyer(aliasExpediteur + ">>" + str);
+            }
+        }
+    }
+
             }
 
-    }
-}
+
+
+
+
