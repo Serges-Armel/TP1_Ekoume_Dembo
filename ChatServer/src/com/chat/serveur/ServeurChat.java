@@ -99,7 +99,7 @@ public class ServeurChat extends Serveur {
 
     public void envoyerATousSauf(String str, String aliasExpediteur){
             for(Connexion cnx: connectes){
-                if(aliasExpediteur.equals(cnx.getAlias())){
+                if(!aliasExpediteur.equals(cnx.getAlias())){
                     cnx.envoyer(str);
                 }
             }
