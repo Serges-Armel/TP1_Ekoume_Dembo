@@ -2,7 +2,6 @@ package com.chat.programme;
 
 import com.chat.serveur.Config;
 import com.chat.serveur.ServeurChat;
-import com.chat.serveur.Serveur;
 
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2023-09-01
  */
-public class Main {
+public class Main_Serveur {
 	/**
 	 * Méthode principale du programme.
 	 *
@@ -25,7 +24,7 @@ public class Main {
         Scanner clavier = new Scanner(System.in);
         String saisie;
 
-        Serveur serveur = new ServeurChat(Config.PORT_SERVEUR);
+        com.chat.serveur.Serveur serveur = new ServeurChat(Config.PORT_SERVEUR);
         if (serveur.demarrer()) {
             System.out.println("Serveur a l'ecoute sur le port " + serveur.getPort());
         }

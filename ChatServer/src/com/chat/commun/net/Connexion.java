@@ -67,6 +67,7 @@ public class Connexion {
         os.flush();
     }
 
+
     /**
      * Ferme la connexion en fermant le socket et les flux utilisés.
      *
