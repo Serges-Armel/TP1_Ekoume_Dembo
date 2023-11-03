@@ -51,9 +51,7 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                 case "LIST": //Envoie la liste des alias des personnes connectées :
                     cnx.envoyer("LIST " + serveur.list());
                     break;
-                case "MSG": //Envoie le message a la liste des alias des personnes connectées :
-                    cnx.envoyer(cnx.getAlias() + " >> " + evenement.getArgument());
-                    break;
+
 
                 //Ajoutez ici d’autres case pour gérer d’autres commandes.
                 case "MSG": //Envoie un message au salon de chat public
