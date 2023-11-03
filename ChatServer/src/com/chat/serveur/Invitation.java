@@ -14,9 +14,7 @@ public class Invitation {
         return aliasHote;
     }
 
-    public void envoyerInvitation (String msg){
 
-    }
 
 
 }
