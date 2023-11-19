@@ -11,7 +11,19 @@ public class Invitation {
 
 
     public String getAliasInvite() {
+
+        return aliasInvite;
+    }
+    public String getAliasHote() {
         return aliasHote;
+    }
+    public String InvitePersonne(String aliasInvite){
+
+        String msg= "VOULEZ VOUS CHATTEZ AVEC " + aliasInvite;
+
+        System.out.println(msg);
+
+        return msg;
     }
 
 

@@ -51,24 +51,19 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                 case "LIST": //Envoie la liste des alias des personnes connectées :
                     cnx.envoyer("LIST " + serveur.list());
                     break;
-
-
                 //Ajoutez ici d’autres case pour gérer d’autres commandes.
                 case "MSG": //Envoie un message au salon de chat public
-                    serveur.envoyerATousSauf(cnx.getAlias() + " >> " + evenement.getArgument(),cnx.getAlias());
+                    serveur.envoyerATousSauf(evenement.getArgument(), cnx.getAlias());
                     break;
-                case  "JOIN":
-                    serveur.envoyerATousSauf( evenement.getArgument() + " JOIN " + cnx.getAlias(),cnx.getAlias());
+                case "JOIN":
+                            serveur.envoyerinvitation(cnx.getAlias());
 
                     break;
-                case "HIST": //Envoie l'historique des messages au salon de chat public
-                    cnx.envoyer("HIST " + serveur.historique());
-                    break;
-
                 default: //Renvoyer le texte recu convertit en majuscules :
                     msg = (evenement.getType() + " " + evenement.getArgument()).toUpperCase();
                     cnx.envoyer(msg);
             }
         }
+
     }
 }
