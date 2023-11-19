@@ -52,8 +52,10 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
                         System.out.println("\t\t\t- "+s);
                     break;
                 case "HIST":
+                break;
+              /*  case "JOIN":
                     System.out.println();
-                    break;
+                    break;*/
                 default: //Afficher le texte recu :
                     System.out.println("\t\t\t."+evenement.getType()+" "+evenement.getArgument());
             }
