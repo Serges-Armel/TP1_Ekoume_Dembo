@@ -41,7 +41,16 @@ public class Position {
      * @return boolean true si les 2 positions sont voisines, false sinon.
      */
     public boolean estVoisineDe(Position p) {
-        throw new NotImplementedException();
+        if (p.getColonne() == this.getColonne() && p.getLigne() == this.getLigne() + 1)
+            return true;
+        if (p.getColonne() == this.getColonne() && p.getLigne() == this.getLigne() - 1)
+            return true;
+        if (p.getColonne() + 1 ==this.getColonne() && p.getLigne() == this.getLigne())
+            return true;
+        if (p.getColonne() - 1 == this.getColonne() && p.getLigne() == this.getLigne())
+            return true;
+        return false;
+        // throw new NotImplementedException();
     }
     /**
      * Indique si 2 positions sont sur la même ligne sur un échiquier.
@@ -50,7 +59,8 @@ public class Position {
      * @return boolean true si les 2 positions sont sur la même ligne, false sinon.
      */
     public boolean estSurLaMemeLigneQue(Position p) {
-        throw new NotImplementedException();
+        return p.getLigne() == this.ligne;
+        // throw new NotImplementedException();
     }
     /**
      * Indique si 2 positions sont sur la même colonne sur un échiquier.
@@ -59,7 +69,8 @@ public class Position {
      * @return boolean true si les 2 positions sont sur la même colonne, false sinon.
      */
     public boolean estSurLaMemeColonneQue(Position p) {
-        throw new NotImplementedException();
+        return p.getColonne() == this.colonne;
+        // throw new NotImplementedException();
     }
     /**
      * Indique si 2 positions sont sur la même diagonale sur un échiquier.
@@ -68,6 +79,15 @@ public class Position {
      * @return boolean true si les 2 positions sont sur la même diagonale, false sinon.
      */
     public boolean estSurLaMemeDiagonaleQue(Position p) {
-        throw new NotImplementedException();
+        if (p.getColonne() == this.getColonne() + 1 && p.getLigne() == this.getLigne() + 1)
+            return true;
+        if (p.getColonne() == this.getColonne() - 1 && p.getLigne() == this.getLigne() - 1)
+            return true;
+        if (p.getColonne() == this.getColonne() + 1 && p.getLigne() == this.getLigne() - 1)
+            return true;
+        if (p.getColonne() == this.getColonne() - 1 && p.getLigne() == this.getLigne() + 1)
+            return true;
+        return false;
+        // throw new NotImplementedException();
     }
 }
