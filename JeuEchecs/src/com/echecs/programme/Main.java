@@ -20,5 +20,8 @@ public class Main {
         System.out.print("  ");
         for (byte j=0;j<8;j++)
             System.out.print(EchecsUtil.getColonne(j)+" ");
+
+        
     }
 }
+

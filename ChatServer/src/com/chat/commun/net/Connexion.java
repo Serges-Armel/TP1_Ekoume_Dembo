@@ -1,8 +1,6 @@
 package com.chat.commun.net;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -17,7 +15,8 @@ public class Connexion {
 
     private Socket socket;
     private PrintWriter os;
-    private BufferedInputStream is;
+    //private BufferedInputStream is;
+    private BufferedReader is2;
     private String alias;
 
     /**
@@ -28,7 +27,8 @@ public class Connexion {
     public Connexion(Socket s) {
         try {
             socket = s;
-            is = new BufferedInputStream(socket.getInputStream());
+            //is = new BufferedInputStream(socket.getInputStream());
+            is2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             os = new PrintWriter(socket.getOutputStream());
         } catch (IOException e) {
         }
@@ -42,16 +42,23 @@ public class Connexion {
     public String getAvailableText() {
         String t = "";
         try {
-            byte buf[] = new byte[2000];    //buffer de lecture
+            //byte buf[] = new byte[2000];    //buffer de lecture
 
-            if (is.available() <= 0)
+            if (is2.ready()) {
+                t = is2.readLine();
+                if (t==null)
+                    t = "";
+                else
+                    t = t.trim();
+            }
+            /*if (is.available() <= 0)
                 return "";
             //Lire le inputstream
             is.read(buf);
-            t = (new String(buf)).trim();
+            t = (new String(buf)).trim();*/
             //System.out.println(texte);
             //Effacer le buffer
-            buf = null;
+            //buf = null;
         } catch (IOException e) {
         }
         return t;
@@ -63,10 +70,9 @@ public class Connexion {
      * @param texte String texte envoyé
      */
     public void envoyer(String texte) {
-        os.print(texte);
+        os.println(texte);
         os.flush();
     }
-
 
     /**
      * Ferme la connexion en fermant le socket et les flux utilisés.
@@ -75,8 +81,8 @@ public class Connexion {
      */
     public boolean close() {
         try {
-            //envoyer("Connexion closed !");
-            is.close();
+            //is.close();
+            is2.close();
             os.close();
             socket.close();
         } catch (IOException e) {

@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/ChatServer/ChatServer.iml" filepath="$PROJECT_DIR$/ChatServer/ChatServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/JeuEchecs/JeuEchecs.iml" filepath="$PROJECT_DIR$/JeuEchecs/JeuEchecs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/TP1.iml" filepath="$PROJECT_DIR$/.idea/TP1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TP2_Ekoume_Dembo/TP2_Ekoume_Dembo.iml" filepath="$PROJECT_DIR$/TP2_Ekoume_Dembo/TP2_Ekoume_Dembo.iml" />
     </modules>
   </component>
 </project>
