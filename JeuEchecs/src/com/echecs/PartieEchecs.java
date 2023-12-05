@@ -33,6 +33,8 @@ public class PartieEchecs {
      */
     public PartieEchecs() {
         echiquier = new Piece[8][8];
+        couleurJoueur1 = 'n';
+        couleurJoueur2 = 'b';
         //Placement des pièces :
         echiquier[0][0] = new Tour(couleurJoueur1);
         echiquier[0][7] = new Tour(couleurJoueur1);
