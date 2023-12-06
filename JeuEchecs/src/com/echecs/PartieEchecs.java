@@ -1,6 +1,6 @@
 package com.echecs;
 
-import com.echecs.pieces.Piece;
+import com.echecs.pieces.*;
 import com.echecs.util.EchecsUtil;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -33,7 +33,32 @@ public class PartieEchecs {
      */
     public PartieEchecs() {
         echiquier = new Piece[8][8];
+        couleurJoueur1 = 'n';
+        couleurJoueur2 = 'b';
         //Placement des pièces :
+        echiquier[0][0] = new Tour(couleurJoueur1);
+        echiquier[0][7] = new Tour(couleurJoueur1);
+        echiquier[0][1] = new Cavalier(couleurJoueur1);
+        echiquier[0][6] = new Cavalier(couleurJoueur1);
+        echiquier[0][2] = new Fou(couleurJoueur1);
+        echiquier[0][5] = new Fou(couleurJoueur1);
+        echiquier[0][3] = new Dame(couleurJoueur1);
+        echiquier[0][4] = new Roi(couleurJoueur1);
+        echiquier[7][0] = new Tour(couleurJoueur2);
+        echiquier[7][7] = new Tour(couleurJoueur2);
+        echiquier[7][1] = new Cavalier(couleurJoueur2);
+        echiquier[7][6] = new Cavalier(couleurJoueur2);
+        echiquier[7][2] = new Fou(couleurJoueur2);
+        echiquier[7][5] = new Fou(couleurJoueur2);
+        echiquier[7][3] = new Dame(couleurJoueur2);
+        echiquier[7][4] = new Roi(couleurJoueur2);
+
+        for (int i = 0; i < echiquier.length; i++){
+            echiquier[1][i] = new Pion(couleurJoueur1);
+            echiquier[6][i] = new Pion(couleurJoueur2);
+        }
+
+
 
     }
 

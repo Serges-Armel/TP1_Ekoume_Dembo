@@ -1,10 +1,8 @@
 package com.chat.serveur;
 
-import com.chat.commun.evenement.Evenement;
 import com.chat.commun.net.Connexion;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * Cette classe étend (hérite) la classe abstraite Serveur et y ajoute le nécessaire pour que le
@@ -15,7 +13,7 @@ import java.util.Vector;
  * @since 2023-09-15
  */
 public class ServeurChat extends Serveur {
-Vector <String> historique = new Vector<>();
+
     /**
      * Crée un serveur de chat qui va écouter sur le port spécifié.
      *
@@ -94,37 +92,17 @@ Vector <String> historique = new Vector<>();
      * @return String chaîne de caractères contenant la liste des alias des membres connectés sous la
      * forme message1\nmessage2\nmessage3 ...
      */
-
-
     public String historique() {
-
         String s = "";
-            for(Connexion cnx: connectes) {
-                s+=cnx.getAlias()+ ">>" + historique;
-            }
-            return s;
+        return s;
     }
-    public void ajouterHistorique(String msg){
-        for(Connexion cnx: connectes){
-            msg = cnx.getAvailableText();;
-           historique.add(msg);
 
-        }
-    }
     public void envoyerATousSauf(String str, String aliasExpediteur){
             for(Connexion cnx: connectes){
                 if(!aliasExpediteur.equals(cnx.getAlias())){
-                    cnx.envoyer(aliasExpediteur + ">>" +str);
+                    cnx.envoyer(str);
                 }
             }
 
-    }
-    public  void envoyerinvitation(String aliasHote){
-        Invitation invitation = new Invitation();
-        for (Connexion cnx: connectes){
-            if(cnx.getAlias()!=aliasHote) {
-                cnx.envoyer(invitation.InvitePersonne(aliasHote));
-            }
-        }
     }
 }
