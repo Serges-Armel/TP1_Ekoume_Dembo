@@ -24,6 +24,10 @@ public class EcouteurChatPublic implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent evt) {
-        //à compléter
+        Object source = evt.getSource();
+        if(source instanceof JTextField)
+        {
+
+        }
     }
 }

@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2023-09-01
  */
-public class Main {
+public class  Main {
 	/**
 	 * Méthode principale du programme.
 	 *

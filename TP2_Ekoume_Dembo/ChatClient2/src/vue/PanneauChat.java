@@ -15,7 +15,13 @@ public class PanneauChat extends JPanel {
     protected JTextField champDeSaisie;
 
     public PanneauChat() {
-        //à compléter.
+        JScrollPane scrollPane =new JScrollPane(zoneChat);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        this.setLayout(new BorderLayout());
+        this.add(scrollPane,BorderLayout.CENTER);
+        this.add(champDeSaisie,BorderLayout.SOUTH);
     }
 
     public void ajouter(String msg) {

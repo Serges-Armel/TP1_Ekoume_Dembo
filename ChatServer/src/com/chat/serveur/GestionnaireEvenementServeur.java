@@ -56,7 +56,7 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                     serveur.envoyerATousSauf(evenement.getArgument(), cnx.getAlias());
                     break;
                 case "JOIN":
-                            serveur.envoyerinvitation(cnx.getAlias());
+                         //   serveur.envoyerinvitation(cnx.getAlias());
 
                     break;
                 default: //Renvoyer le texte recu convertit en majuscules :

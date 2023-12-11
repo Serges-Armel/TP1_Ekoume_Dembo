@@ -2,6 +2,7 @@ package vue;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -9,11 +10,17 @@ import java.awt.*;
  * @version 1.0
  * @since 2023-11-01
  */
-public class PanneauConfigServeur extends JPanel {
+public class PanneauConfigServeur extends JPanel  {
     private JTextField txtAdrServeur, txtNumPort;
 
     public PanneauConfigServeur(String adr, int port) {
-        //à compléter
+        adr=getAdresseServeur();
+        port=Integer.parseInt(getPortServeur());
+        txtAdrServeur = new JTextField(adr,10);
+        txtNumPort = new JTextField("salut",10);
+        this.add(txtAdrServeur);
+        this.add(txtNumPort);
+
     }
     public String getAdresseServeur() {
         return txtAdrServeur.getText();

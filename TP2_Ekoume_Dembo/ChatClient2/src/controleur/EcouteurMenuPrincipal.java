@@ -22,6 +22,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
     public EcouteurMenuPrincipal(ClientChat clientChat, JFrame fenetre) {
         this.clientChat = clientChat;
         this.fenetre = fenetre;
+
     }
 
     @Override
@@ -33,7 +34,6 @@ public class EcouteurMenuPrincipal implements ActionListener {
         boolean recommencer;
         if (source instanceof JMenuItem) {
             action = ((JMenuItem)source).getActionCommand();
-
             switch (action) {
                 case "CONNECTER":
                     if (!clientChat.isConnecte()) {
@@ -52,7 +52,9 @@ public class EcouteurMenuPrincipal implements ActionListener {
                     }
                     break;
                 case "CONFIGURER":
+
                     PanneauConfigServeur pcs = new PanneauConfigServeur(clientChat.getAdrServeur(),clientChat.getPortServeur());
+
                     recommencer = true;
                     do {
                         res = JOptionPane.showConfirmDialog(fenetre, pcs, "Configuration serveur", JOptionPane.OK_CANCEL_OPTION);
@@ -69,6 +71,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
                         }
                         else
                             recommencer=false;
+                        pcs.setEnabled(true);
                     }while (recommencer);
                     break;
                 case "QUITTER":
